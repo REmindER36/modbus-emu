@@ -18,7 +18,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainView.fxml"));
         
-        Scene scene = new Scene(root, 800, 600);
+        //Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root);
         
         primaryStage.setTitle("ModBus Slave");
         primaryStage.setScene(scene);
