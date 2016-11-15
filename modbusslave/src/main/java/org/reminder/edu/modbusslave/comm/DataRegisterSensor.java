@@ -1,10 +1,10 @@
 package org.reminder.edu.modbusslave.comm;
 
-import org.reminder.edu.modbusslave.model.Sensor;
+import org.reminder.edu.modbusslave.entity.SensorImpl;
 
 import net.wimpi.modbus.procimg.Register;
 
-public class DataRegisterSensor extends Sensor {
+public class DataRegisterSensor extends SensorImpl {
 
     private Register register;
 

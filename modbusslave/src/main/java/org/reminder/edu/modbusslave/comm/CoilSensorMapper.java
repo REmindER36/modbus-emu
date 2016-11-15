@@ -2,7 +2,7 @@ package org.reminder.edu.modbusslave.comm;
 
 import java.util.List;
 
-import org.reminder.edu.modbusslave.model.Sensor;
+import org.reminder.edu.modbusslave.entity.Sensor;
 
 import net.wimpi.modbus.procimg.ObservableDigitalOut;
 import net.wimpi.modbus.util.Observable;
