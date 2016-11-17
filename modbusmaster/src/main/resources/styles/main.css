@@ -1,0 +1,7 @@
+.configPane {
+    -fx-padding: 15;
+    -fx-spacing: 10;
+    -fx-background-color: white;
+    -fx-background-insets: 5;
+    -fx-background-radius: 5.0;
+}
