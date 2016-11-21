@@ -12,80 +12,85 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.control.TextField?>
 
-<GridPane alignment="BASELINE_CENTER" blendMode="SRC_OVER" cache="false" gridLinesVisible="false" hgap="0.0" maxHeight="-Infinity" maxWidth="722.0" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="-1.0" prefWidth="-1.0" rotate="0.0" snapToPixel="false" vgap="0.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.reminder.edu.controller.MainViewController">
-  <!-- <columnConstraints> <ColumnConstraints minWidth="10.0" prefWidth="100.0" 
-		/> </columnConstraints> -->
+<GridPane alignment="BASELINE_CENTER" blendMode="SRC_OVER" cache="false" gridLinesVisible="false" hgap="0.0" maxHeight="-Infinity" maxWidth="722.0" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="-1.0" prefWidth="-1.0" rotate="0.0" snapToPixel="false" vgap="0.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.reminder.edu.controller.SlaveController">
   <children>
     <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="722.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="1.7976931348623157E308" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <tabs>
         <Tab text="Параметры интерфейса">
           <content>
             <VBox alignment="TOP_CENTER" prefHeight="200.0">
-              <HBox prefHeight="16.0" prefWidth="722.0" />
-              <ImageView fitHeight="141.98828125" fitWidth="446.0" opacity="0.31" pickOnBounds="true" preserveRatio="true">
-                <image>
-                  <Image url="@../../../../../../../../Desktop/logo-modbus-1024x326.png" />
-                </image>
-              </ImageView>
-              <HBox prefHeight="21.0" prefWidth="722.0" />
-              <HBox>
-                <GridPane alignment="CENTER" hgap="5.0" prefHeight="93.0" prefWidth="191.0" styleClass="configPane" vgap="5.0">
-                  <children>
-                    <Label text="Адрес Slave:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
-                  </children>
-                  <columnConstraints>
-                    <ColumnConstraints maxWidth="73.0" prefWidth="71.0" />
-                    <ColumnConstraints maxWidth="142.0" prefWidth="95.0" />
-                  </columnConstraints>
-                  <padding>
-                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                  </padding>
-                  <rowConstraints>
-                    <RowConstraints />
-                  </rowConstraints>
-                </GridPane>
-                <GridPane hgap="5.0" prefWidth="517.0" styleClass="configPane" vgap="5.0">
-                  <children>
-                    <Label text="Порт:" textAlignment="LEFT" GridPane.halignment="RIGHT" />
-                    <ComboBox fx:id="portNames" prefWidth="150.0" GridPane.columnIndex="1" />
-                    <Label text="Скорость (бит/с):" textAlignment="LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                    <ComboBox fx:id="dataBits" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                    <Label text="Четность:" textAlignment="LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                    <ComboBox fx:id="baudRate" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                    <Label text="Биты данных:" textAlignment="LEFT" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
-                    <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-                    <Label text="Стоповые биты:" textAlignment="LEFT" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                    <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                    <Label text="Управление потоком:" textAlignment="LEFT" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                    <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  </children>
-                  <columnConstraints>
-                    <ColumnConstraints maxWidth="101.0" prefWidth="97.0" />
-                    <ColumnConstraints maxWidth="147.0" prefWidth="113.0" />
-                    <ColumnConstraints maxWidth="151.0" prefWidth="145.0" />
-                    <ColumnConstraints maxWidth="149.0" prefWidth="118.0" />
-                  </columnConstraints>
-                  <padding>
-                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                  </padding>
-                  <rowConstraints>
-                    <RowConstraints maxHeight="21.0" prefHeight="21.0" />
-                    <RowConstraints maxHeight="21.0" prefHeight="21.0" />
-                    <RowConstraints maxHeight="21.0" prefHeight="21.0" />
-                  </rowConstraints>
-                </GridPane>
-              </HBox>
-              <HBox alignment="BASELINE_RIGHT" prefHeight="30.0" prefWidth="722.0" styleClass="configPane">
-                <Button text="Открыть" />
-                <Text opacity="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false" wrappingWidth="5.0" />
-                <Button text="Закрыть" />
-                <Text opacity="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false" wrappingWidth="32.0" />
-                <padding>
-                  <Insets top="5.0" />
-                </padding>
-              </HBox>
+               <children>
+                 <HBox prefHeight="16.0" prefWidth="722.0" />
+                 <ImageView fitHeight="141.98828125" fitWidth="446.0" opacity="0.31" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                     <Image url="@/fxml/logo-modbus-1024x326.png" />
+                   </image>
+                 </ImageView>
+                 <HBox prefHeight="21.0" prefWidth="722.0" />
+                 <HBox>
+                    <children>
+                      <GridPane alignment="CENTER" hgap="5.0" prefHeight="93.0" prefWidth="191.0" styleClass="configPane" vgap="5.0">
+                        <children>
+                          <Label text="Адрес Slave:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                          <TextField prefWidth="150.0" GridPane.columnIndex="1" />
+                        </children>
+                        <columnConstraints>
+                          <ColumnConstraints maxWidth="73.0" prefWidth="71.0" />
+                          <ColumnConstraints maxWidth="142.0" prefWidth="95.0" />
+                        </columnConstraints>
+                        <padding>
+                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                        <rowConstraints>
+                          <RowConstraints />
+                        </rowConstraints>
+                      </GridPane>
+                      <GridPane hgap="5.0" prefWidth="517.0" styleClass="configPane" vgap="5.0">
+                        <children>
+                          <Label text="Порт:" textAlignment="LEFT" GridPane.halignment="RIGHT" />
+                          <ComboBox fx:id="portNames" prefWidth="150.0" GridPane.columnIndex="1" />
+                          <Label text="Скорость (бит/с):" textAlignment="LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                          <ComboBox fx:id="baudRate" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                          <Label text="Четность:" textAlignment="LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                          <ComboBox fx:id="parity" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                          <Label text="Биты данных:" textAlignment="LEFT" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
+                          <ComboBox fx:id="dataBits" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                          <Label text="Стоповые биты:" textAlignment="LEFT" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                          <ComboBox fx:id="stopBits" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                          <Label text="Управление потоком:" textAlignment="LEFT" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                          <ComboBox fx:id="flowControl" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        </children>
+                        <columnConstraints>
+                          <ColumnConstraints maxWidth="101.0" prefWidth="97.0" />
+                          <ColumnConstraints maxWidth="147.0" prefWidth="113.0" />
+                          <ColumnConstraints maxWidth="151.0" prefWidth="145.0" />
+                          <ColumnConstraints maxWidth="149.0" prefWidth="118.0" />
+                        </columnConstraints>
+                        <padding>
+                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                        <rowConstraints>
+                          <RowConstraints maxHeight="21.0" prefHeight="21.0" />
+                          <RowConstraints maxHeight="21.0" prefHeight="21.0" />
+                          <RowConstraints maxHeight="21.0" prefHeight="21.0" />
+                        </rowConstraints>
+                      </GridPane>
+                    </children>
+                 </HBox>
+                 <HBox alignment="BASELINE_RIGHT" prefHeight="30.0" prefWidth="722.0" styleClass="configPane">
+                    <children>
+                      <Button onAction="#handleOpenConnection" text="Открыть" />
+                      <Text opacity="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false" wrappingWidth="5.0" />
+                      <Button onAction="#handleCloseConnection" text="Закрыть" />
+                      <Text opacity="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false" wrappingWidth="32.0" />
+                    </children>
+                   <padding>
+                     <Insets top="5.0" />
+                   </padding>
+                 </HBox>
+               </children>
             </VBox>
           </content>
         </Tab>

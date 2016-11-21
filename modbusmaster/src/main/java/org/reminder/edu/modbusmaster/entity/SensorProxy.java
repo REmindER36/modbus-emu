@@ -64,32 +64,32 @@ public class SensorProxy implements Sensor, Updatable {
     }
 
     @Override
-    public void onSensor() {
+    public void onSensor() throws Exception {
         sensor.onSensor();
     }
 
     @Override
-    public void offSensor() {
+    public void offSensor() throws Exception {
         sensor.offSensor();
     }
 
     @Override
-    public void setDefectStatus() {
+    public void setDefectStatus() throws Exception {
         sensor.setDefectStatus();
     }
 
     @Override
-    public void setNormalStatus() {
+    public void setNormalStatus() throws Exception {
         sensor.setNormalStatus();
     }
 
     @Override
-    public void setAlarmStatus() {
+    public void setAlarmStatus() throws Exception {
         sensor.setAlarmStatus();
     }
 
     @Override
-    public void update() throws ModbusIOException, ModbusSlaveException, ModbusException {
+    public void update() throws Exception {
         ReadInputRegistersRequest requset = new ReadInputRegistersRequest(sensor.getId(), 1);
         ReadInputRegistersResponse response = null;
         tx.setRequest(requset);

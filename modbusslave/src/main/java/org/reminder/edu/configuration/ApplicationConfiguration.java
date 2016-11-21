@@ -23,7 +23,7 @@ public class ApplicationConfiguration {
     private String parity = PARITY;
     private int baudRate = BAUD_RATE;
     private int dataBits = DATA_BITS;
-    private int stopBits = STOP_BITS;
+    private String stopBits = STOP_BITS;
     private int thermalSensorCount = THERMAL_SENSOR_COUNT;
     private int smokeSensorCount = SMOKE_SENSOR_COUNT;
     private int fireButtonCount = FIRE_BUTTON_COUNT;
@@ -128,11 +128,11 @@ public class ApplicationConfiguration {
         this.dataBits = dataBits;
     }
 
-    public int getStopBits() {
+    public String getStopBits() {
         return stopBits;
     }
 
-    public void setStopBits(int stopBits) {
+    public void setStopBits(String stopBits) {
         this.stopBits = stopBits;
     }
 

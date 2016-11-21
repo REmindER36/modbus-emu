@@ -47,6 +47,7 @@ public class App {
             params.setStopbits(1);
             params.setEncoding("ascii");
             params.setEcho(false);
+            params.setFlowControlIn("");
 
             Thread t = new Thread(new Runnable() {
 
