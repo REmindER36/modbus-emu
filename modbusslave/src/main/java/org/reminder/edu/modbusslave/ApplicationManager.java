@@ -3,14 +3,16 @@ package org.reminder.edu.modbusslave;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.security.auth.login.AppConfigurationEntry;
-
 import org.reminder.edu.configuration.ApplicationConfiguration;
 import org.reminder.edu.modbusslave.comm.CoilSensorMapper;
 import org.reminder.edu.modbusslave.comm.DataRegisterSensor;
 
+import net.wimpi.modbus.Modbus;
 import net.wimpi.modbus.ModbusCoupler;
-import net.wimpi.modbus.net.ModbusSerialListener;
+import net.wimpi.modbus.io.ModbusTransport;
+import net.wimpi.modbus.msg.ModbusRequest;
+import net.wimpi.modbus.msg.ModbusResponse;
+import net.wimpi.modbus.net.SerialConnection;
 import net.wimpi.modbus.procimg.DigitalOut;
 import net.wimpi.modbus.procimg.ObservableDigitalOut;
 import net.wimpi.modbus.procimg.Register;
@@ -23,8 +25,7 @@ public class ApplicationManager {
     private List<DigitalOut> digOuts;
     private List<Register> registers;
     private List<CoilSensorMapper> mappers;
-    private ModbusSerialListener listener;
-    
+
     private String portName;
     private int baudRate;
     private int dataBits;
@@ -32,6 +33,7 @@ public class ApplicationManager {
     private String stopBits;
     private String flowControl;
     private int slaveId;
+    private Thread currentModBusListener;
 
     public ApplicationManager() {
         sensors = Helper.createSensorsFromConfiguration();
@@ -47,17 +49,17 @@ public class ApplicationManager {
             mappers.add(new CoilSensorMapper(sensor, digs));
             digOuts.addAll(digs);
         }
-        
+
         ApplicationConfiguration appConfig = ApplicationConfiguration
                 .getInstance();
-        
+
         this.portName = "COM1";
         this.baudRate = appConfig.getBaudRate();
         this.parity = appConfig.getParity();
         this.stopBits = appConfig.getStopBits();
         this.flowControl = "None";
         this.slaveId = appConfig.getSlaveUuid();
-        
+
     }
 
     protected SimpleProcessImage buildSimpleProcessImage() {
@@ -92,24 +94,61 @@ public class ApplicationManager {
         params.setEncoding("ascii");
         params.setEcho(false);
 
-        Thread t = new Thread(new Runnable() {
-
-            public void run() {
-                setModbusSerialListener(new ModbusSerialListener(params));
-            }
-        });
-        t.setDaemon(false);
-        t.start();
+        currentModBusListener = new ModBusListener(params);
+        currentModBusListener.start();
+        /*
+         * Thread t = new Thread(new Runnable() { public void run() {
+         * setModbusSerialListener(new ModbusSerialListener(params)); } });
+         * t.setDaemon(true); t.start();
+         */
     }
 
-    private void setModbusSerialListener(ModbusSerialListener listener) {
-        this.listener = listener;
+    private class ModBusListener extends Thread {
+
+        private SerialConnection connection;
+
+        public ModBusListener(SerialParameters params) {
+            connection = new SerialConnection(params);
+            this.setDaemon(true);
+        }
+
+        @Override
+        public void run() {
+
+            try {
+                connection.open();
+                ModbusTransport transport = connection.getModbusTransport();
+
+                while (!this.isInterrupted()) {
+                    ModbusRequest request = transport.readRequest();
+                    ModbusResponse response = null;
+
+                    if (ModbusCoupler.getReference()
+                            .getProcessImage() == null) {
+                        response = request.createExceptionResponse(
+                                Modbus.ILLEGAL_FUNCTION_EXCEPTION);
+                    } else {
+                        response = request.createResponse();
+                    }
+
+                    System.out.println("Request:" + request.getHexMessage());
+                    System.out.println("Response:" + response.getHexMessage());
+
+                    transport.writeMessage(response);
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            } finally {
+                connection.close();
+            }
+        }
     }
 
     public void stopModbusListener() {
-        if (listener == null)
-            return;
-        listener.setListening(false);
+        if (currentModBusListener != null) {
+            currentModBusListener.interrupt();
+        }
     }
 
     public void setPortName(String portName) {
@@ -135,7 +174,6 @@ public class ApplicationManager {
     public void setFlowControl(String flowControl) {
         this.flowControl = flowControl;
     }
-    
 
     public void setSlaveId(int slaveId) {
         this.slaveId = slaveId;
