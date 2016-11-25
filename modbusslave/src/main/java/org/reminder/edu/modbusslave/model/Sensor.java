@@ -2,8 +2,8 @@ package org.reminder.edu.modbusslave.model;
 
 /**
  * Основная сущность эмулирующая действия сенсоров.
- * @author Dmitrii Olkhov <reminder63@gmail.com>
  * 
+ * @author Dmitrii Olkhov <reminder63@gmail.com>
  */
 public class Sensor {
 

@@ -77,8 +77,6 @@ public class ApplicationManager {
     }
 
     public void startModbusListener() {
-        ApplicationConfiguration appConfig = ApplicationConfiguration
-                .getInstance();
         SimpleProcessImage spi = buildSimpleProcessImage();
 
         ModbusCoupler.getReference().setProcessImage(spi);
@@ -103,7 +101,41 @@ public class ApplicationManager {
          */
     }
 
-    private class ModBusListener extends Thread {
+    public void stopModbusListener() {
+        if (currentModBusListener != null) {
+            currentModBusListener.interrupt();
+        }
+    }
+
+    public void setPortName(String portName) {
+        this.portName = portName;
+    }
+
+    public void setBaudRate(int baudRate) {
+        this.baudRate = baudRate;
+    }
+
+    public void setDataBits(int dataBits) {
+        this.dataBits = dataBits;
+    }
+
+    public void setParity(String parity) {
+        this.parity = parity;
+    }
+
+    public void setStopBits(String stopBits) {
+        this.stopBits = stopBits;
+    }
+
+    public void setFlowControl(String flowControl) {
+        this.flowControl = flowControl;
+    }
+
+    public void setSlaveId(int slaveId) {
+        this.slaveId = slaveId;
+    }
+
+    private static class ModBusListener extends Thread {
 
         private SerialConnection connection;
 
@@ -143,39 +175,5 @@ public class ApplicationManager {
                 connection.close();
             }
         }
-    }
-
-    public void stopModbusListener() {
-        if (currentModBusListener != null) {
-            currentModBusListener.interrupt();
-        }
-    }
-
-    public void setPortName(String portName) {
-        this.portName = portName;
-    }
-
-    public void setBaudRate(int baudRate) {
-        this.baudRate = baudRate;
-    }
-
-    public void setDataBits(int dataBits) {
-        this.dataBits = dataBits;
-    }
-
-    public void setParity(String parity) {
-        this.parity = parity;
-    }
-
-    public void setStopBits(String stopBits) {
-        this.stopBits = stopBits;
-    }
-
-    public void setFlowControl(String flowControl) {
-        this.flowControl = flowControl;
-    }
-
-    public void setSlaveId(int slaveId) {
-        this.slaveId = slaveId;
     }
 }

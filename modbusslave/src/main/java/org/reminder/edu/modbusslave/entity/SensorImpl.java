@@ -2,8 +2,8 @@ package org.reminder.edu.modbusslave.entity;
 
 /**
  * Основная сущность эмулирующая действия сенсоров.
- * @author Dmitrii Olkhov <reminder63@gmail.com>
  * 
+ * @author Dmitrii Olkhov <reminder63@gmail.com>
  */
 public class SensorImpl implements Sensor {
 
@@ -26,7 +26,8 @@ public class SensorImpl implements Sensor {
         this.shortName = shortName + id;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#getName()
      */
     @Override
@@ -34,7 +35,8 @@ public class SensorImpl implements Sensor {
         return this.name;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#getId()
      */
     @Override
@@ -42,7 +44,8 @@ public class SensorImpl implements Sensor {
         return id;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#getShortName()
      */
     @Override
@@ -50,7 +53,8 @@ public class SensorImpl implements Sensor {
         return this.shortName;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#getState()
      */
     @Override
@@ -58,7 +62,8 @@ public class SensorImpl implements Sensor {
         return states[codeState];
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#getStateCode()
      */
     @Override
@@ -66,7 +71,8 @@ public class SensorImpl implements Sensor {
         return codeState;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#setState(int)
      */
     @Override
@@ -74,7 +80,8 @@ public class SensorImpl implements Sensor {
         this.codeState = codeState;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#isOn()
      */
     @Override
@@ -82,7 +89,8 @@ public class SensorImpl implements Sensor {
         return on;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#onSensor()
      */
     @Override
@@ -90,7 +98,8 @@ public class SensorImpl implements Sensor {
         this.on = true;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#offSensor()
      */
     @Override
@@ -98,7 +107,8 @@ public class SensorImpl implements Sensor {
         this.on = false;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#setDefectStatus()
      */
     @Override
@@ -106,7 +116,8 @@ public class SensorImpl implements Sensor {
         this.codeState = 2;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#setNormalStatus()
      */
     @Override
@@ -114,7 +125,8 @@ public class SensorImpl implements Sensor {
         this.codeState = 0;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.reminder.edu.modbusslave.entity.ISensor#setAlarmStatus()
      */
     @Override

@@ -9,11 +9,8 @@ import net.wimpi.modbus.util.Observable;
 import net.wimpi.modbus.util.Observer;
 
 /**
- * 
- * @author Dmitrii Olkhov <reminder63@gmail.com>
- *
- * Задача класса привязать  конкретный сенсор 
- * к конкретным цифровым портам.
+ * @author Dmitrii Olkhov <reminder63@gmail.com> Задача класса привязать
+ *         конкретный сенсор к конкретным цифровым портам.
  */
 public class CoilSensorMapper implements Observer {
 
@@ -60,6 +57,8 @@ public class CoilSensorMapper implements Observer {
             if (out.isSet()) {
                 sensor.setDefectStatus();
             }
+            break;
+        default:
             break;
         }
     }
