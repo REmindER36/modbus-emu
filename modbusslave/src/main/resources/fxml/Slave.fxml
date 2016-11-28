@@ -129,7 +129,7 @@
     </TabPane>
     <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="722.0" vbarPolicy="AS_NEEDED" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
       <content>
-        <TextArea maxHeight="1.7976931348623157E308" maxWidth="720.0" minHeight="50.0" minWidth="-Infinity" prefHeight="198.0" prefWidth="720.0" text="t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;" wrapText="true" />
+        <TextArea fx:id="logArea" maxHeight="1.7976931348623157E308" maxWidth="720.0" minHeight="50.0" minWidth="-Infinity" prefHeight="198.0" prefWidth="720.0" text="t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;t&#10;" wrapText="true" />
       </content>
     </ScrollPane>
   </children>

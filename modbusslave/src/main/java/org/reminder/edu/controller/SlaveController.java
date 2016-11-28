@@ -5,6 +5,7 @@ import java.util.Enumeration;
 import java.util.ResourceBundle;
 
 import org.reminder.edu.modbusslave.ApplicationManager;
+import org.reminder.edu.modbusslave.MessageRenderer;
 
 import gnu.io.CommPortIdentifier;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 
 public class SlaveController implements Initializable {
 
@@ -39,8 +41,12 @@ public class SlaveController implements Initializable {
 
     @FXML
     private Button btnClose;
+    
+    @FXML
+    private TextArea logArea;
 
     private ApplicationManager model;
+    private MessageRenderer messageRenderer;
 
     public SlaveController() {
     }
@@ -91,16 +97,20 @@ public class SlaveController implements Initializable {
         // flowControlItems.add("rts/cts out");
         flowControl.getSelectionModel().select(0);
 
+        this.messageRenderer = new TextAreaAdapter(logArea);
     }
 
     @FXML
     private void handleOpenConnection(ActionEvent event) {
+        this.logArea.clear();
+        
         model.setPortName(portNames.getValue());
         model.setBaudRate(baudRate.getValue());
         model.setDataBits(dataBits.getValue());
         model.setParity(parity.getValue());
         model.setStopBits(stopBits.getValue());
         model.setFlowControl(flowControl.getValue());
+        
         model.startModbusListener();
     }
 
@@ -111,5 +121,6 @@ public class SlaveController implements Initializable {
 
     public void setApplicationManager(ApplicationManager model) {
         this.model = model;
+        model.setRenderer(messageRenderer);
     }
 }

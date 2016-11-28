@@ -34,6 +34,7 @@ public class ApplicationManager {
     private String flowControl;
     private int slaveId;
     private Thread currentModBusListener;
+    private MessageRenderer renderer;
 
     public ApplicationManager() {
         sensors = Helper.createSensorsFromConfiguration();
@@ -59,7 +60,7 @@ public class ApplicationManager {
         this.stopBits = appConfig.getStopBits();
         this.flowControl = "None";
         this.slaveId = appConfig.getSlaveUuid();
-
+        this.renderer = new EmptyMessageRenderer();
     }
 
     protected SimpleProcessImage buildSimpleProcessImage() {
@@ -92,13 +93,8 @@ public class ApplicationManager {
         params.setEncoding("ascii");
         params.setEcho(false);
 
-        currentModBusListener = new ModBusListener(params);
+        currentModBusListener = new ModBusListener(params, renderer);
         currentModBusListener.start();
-        /*
-         * Thread t = new Thread(new Runnable() { public void run() {
-         * setModbusSerialListener(new ModbusSerialListener(params)); } });
-         * t.setDaemon(true); t.start();
-         */
     }
 
     public void stopModbusListener() {
@@ -134,13 +130,19 @@ public class ApplicationManager {
     public void setSlaveId(int slaveId) {
         this.slaveId = slaveId;
     }
+    
+    public void setRenderer(MessageRenderer renderer) {
+        this.renderer = renderer;
+    }
 
     private static class ModBusListener extends Thread {
 
         private SerialConnection connection;
+        private MessageRenderer log;
 
-        public ModBusListener(SerialParameters params) {
-            connection = new SerialConnection(params);
+        public ModBusListener(SerialParameters params, MessageRenderer log) {
+            this.connection = new SerialConnection(params);
+            this.log = log;
             this.setDaemon(true);
         }
 
@@ -163,8 +165,8 @@ public class ApplicationManager {
                         response = request.createResponse();
                     }
 
-                    System.out.println("Request:" + request.getHexMessage());
-                    System.out.println("Response:" + response.getHexMessage());
+                    log.info("Request: (" + request.getFunctionCode() + ") " + request.getHexMessage().toUpperCase());
+                    log.info("Response: (" + response.getFunctionCode() + ") " + response.getHexMessage().toUpperCase());
 
                     transport.writeMessage(response);
                 }
