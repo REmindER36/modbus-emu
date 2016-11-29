@@ -13,8 +13,6 @@ public class Main extends Application {
     public static void main(String[] args) throws Exception {
         System.setProperty("net.wimpi.modbus.debug", "true");
 
-        // ApplicationManager app = new ApplicationManager();
-        // app.startModbusListener();
         launch(args);
     }
 

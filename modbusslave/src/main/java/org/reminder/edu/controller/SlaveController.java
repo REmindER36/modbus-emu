@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import org.reminder.edu.modbusslave.ApplicationManager;
 import org.reminder.edu.modbusslave.MessageRenderer;
+import org.reminder.edu.modbusslave.comm.DataRegisterSensor;
 
 import gnu.io.CommPortIdentifier;
 import javafx.collections.ObservableList;
@@ -14,6 +15,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 
 public class SlaveController implements Initializable {
@@ -41,7 +44,22 @@ public class SlaveController implements Initializable {
 
     @FXML
     private Button btnClose;
-    
+
+    @FXML
+    private TableView<DataRegisterSensor> registersTable;
+
+    @FXML
+    private TableColumn<DataRegisterSensor, Integer> registerNumberCol;
+
+    @FXML
+    private TableColumn<DataRegisterSensor, Integer> registerValueCol;
+
+    @FXML
+    private TableColumn<DataRegisterSensor, String> commentCol;
+
+    @FXML
+    private TableView digOutsTable;
+
     @FXML
     private TextArea logArea;
 
@@ -98,19 +116,26 @@ public class SlaveController implements Initializable {
         flowControl.getSelectionModel().select(0);
 
         this.messageRenderer = new TextAreaAdapter(logArea);
+
+        registerNumberCol.setCellValueFactory(
+                cellData -> cellData.getValue().getRegisterNumber().asObject());
+        registerValueCol.setCellValueFactory(
+                cellData -> cellData.getValue().getRegisterValue().asObject());
+        commentCol.setCellValueFactory(
+                cellData -> cellData.getValue().getComment());
     }
 
     @FXML
     private void handleOpenConnection(ActionEvent event) {
         this.logArea.clear();
-        
+
         model.setPortName(portNames.getValue());
         model.setBaudRate(baudRate.getValue());
         model.setDataBits(dataBits.getValue());
         model.setParity(parity.getValue());
         model.setStopBits(stopBits.getValue());
         model.setFlowControl(flowControl.getValue());
-        
+
         model.startModbusListener();
     }
 
@@ -122,5 +147,6 @@ public class SlaveController implements Initializable {
     public void setApplicationManager(ApplicationManager model) {
         this.model = model;
         model.setRenderer(messageRenderer);
+        registersTable.getItems().addAll(model.getSensors());
     }
 }

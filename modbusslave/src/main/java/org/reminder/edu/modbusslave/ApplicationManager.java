@@ -130,9 +130,13 @@ public class ApplicationManager {
     public void setSlaveId(int slaveId) {
         this.slaveId = slaveId;
     }
-    
+
     public void setRenderer(MessageRenderer renderer) {
         this.renderer = renderer;
+    }
+
+    public List<DataRegisterSensor> getSensors() {
+        return sensors;
     }
 
     private static class ModBusListener extends Thread {
@@ -165,8 +169,10 @@ public class ApplicationManager {
                         response = request.createResponse();
                     }
 
-                    log.info("Request: (" + request.getFunctionCode() + ") " + request.getHexMessage().toUpperCase());
-                    log.info("Response: (" + response.getFunctionCode() + ") " + response.getHexMessage().toUpperCase());
+                    log.info("Request: (" + request.getFunctionCode() + ") "
+                            + request.getHexMessage().toUpperCase());
+                    log.info("Response: (" + response.getFunctionCode() + ") "
+                            + response.getHexMessage().toUpperCase());
 
                     transport.writeMessage(response);
                 }

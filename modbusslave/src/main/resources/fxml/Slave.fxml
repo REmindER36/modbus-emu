@@ -98,11 +98,11 @@
           <content>
             <ScrollPane prefHeight="200.0" prefWidth="200.0">
               <content>
-                <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="720.0" tableMenuButtonVisible="false">
+                <TableView fx:id="registersTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="720.0" tableMenuButtonVisible="false">
                   <columns>
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="114.0" text="Адрес регистра" />
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="142.0" text="Значение регистра" />
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="452.0" text="Комментарий" />
+                    <TableColumn fx:id="registerNumberCol" maxWidth="5000.0" minWidth="10.0" prefWidth="114.0" text="Адрес регистра" />
+                    <TableColumn fx:id="registerValueCol" maxWidth="5000.0" minWidth="10.0" prefWidth="142.0" text="Значение регистра" />
+                    <TableColumn fx:id="commentCol" maxWidth="5000.0" minWidth="10.0" prefWidth="452.0" text="Комментарий" />
                   </columns>
                 </TableView>
               </content>
@@ -113,13 +113,13 @@
           <content>
             <ScrollPane prefHeight="200.0" prefWidth="200.0">
               <content>
-                <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="720.0" tableMenuButtonVisible="false">
-                  <columns>
+                <TableView fx:id="digOutsTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="720.0" tableMenuButtonVisible="false">
+                  <!-- <columns>
                     <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="94.0" text="Адрес ячейки" />
                     <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="113.0" text="Значение ячейки" />
                     <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="219.0" text="Назначение ячейки" />
                     <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="282.0" text="Комментарий" />
-                  </columns>
+                  </columns> -->
                 </TableView>
               </content>
             </ScrollPane>

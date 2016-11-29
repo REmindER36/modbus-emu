@@ -2,11 +2,18 @@ package org.reminder.edu.modbusslave.comm;
 
 import org.reminder.edu.modbusslave.entity.SensorImpl;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import net.wimpi.modbus.procimg.Register;
 
 public class DataRegisterSensor extends SensorImpl {
 
     private Register register;
+    private IntegerProperty registerNumber;
+    private IntegerProperty registerValue;
+    private StringProperty comment;
 
     public DataRegisterSensor(String name, String alarmMessage,
             String shortName, Register register) {
@@ -14,6 +21,9 @@ public class DataRegisterSensor extends SensorImpl {
         this.register = register;
         onSensor();
         setNormalStatus();
+        getRegisterNumber().setValue(this.getId() - 1);
+        getRegisterValue().setValue(register.getValue());
+        getComment().set(this.getName());
     }
 
     @Override
@@ -56,5 +66,26 @@ public class DataRegisterSensor extends SensorImpl {
 
     public Register getRegister() {
         return this.register;
+    }
+
+    public IntegerProperty getRegisterNumber() {
+        if (registerNumber == null) {
+            registerNumber = new SimpleIntegerProperty(this, "registerNumber");
+        }
+        return registerNumber;
+    }
+
+    public IntegerProperty getRegisterValue() {
+        if (registerValue == null) {
+            registerValue = new SimpleIntegerProperty(this, "registerValue");
+        }
+        return registerValue;
+    }
+
+    public StringProperty getComment() {
+        if (comment == null) {
+            comment = new SimpleStringProperty(this, "comment");
+        }
+        return comment;
     }
 }
