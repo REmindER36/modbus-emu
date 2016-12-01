@@ -58,7 +58,19 @@ public class SlaveController implements Initializable {
     private TableColumn<DataRegisterSensor, String> commentCol;
 
     @FXML
-    private TableView digOutsTable;
+    private TableView<DigitalOutRow> digOutsTable;
+
+    @FXML
+    private TableColumn<DigitalOutRow, Integer> digOutAdressCol;
+
+    @FXML
+    private TableColumn<DigitalOutRow, Integer> digOutValueCol;
+
+    @FXML
+    private TableColumn<DigitalOutRow, String> digOutTargetCol;
+
+    @FXML
+    private TableColumn<DigitalOutRow, String> digOutCommentCol;
 
     @FXML
     private TextArea logArea;
@@ -123,6 +135,15 @@ public class SlaveController implements Initializable {
                 cellData -> cellData.getValue().getRegisterValue().asObject());
         commentCol.setCellValueFactory(
                 cellData -> cellData.getValue().getComment());
+
+        digOutAdressCol.setCellValueFactory(
+                cellData -> cellData.getValue().getDigOutAdress().asObject());
+        digOutCommentCol.setCellValueFactory(
+                cellData -> cellData.getValue().getDigOutComment());
+        digOutTargetCol.setCellValueFactory(
+                cellData -> cellData.getValue().getDigOutTarget());
+        digOutValueCol.setCellValueFactory(
+                cellData -> cellData.getValue().getDigOutValue().asObject());
     }
 
     @FXML
@@ -148,5 +169,7 @@ public class SlaveController implements Initializable {
         this.model = model;
         model.setRenderer(messageRenderer);
         registersTable.getItems().addAll(model.getSensors());
+        digOutsTable.getItems().addAll(
+                DigitalOutRow.generateDigitalOutRow(model.getMappers()));
     }
 }

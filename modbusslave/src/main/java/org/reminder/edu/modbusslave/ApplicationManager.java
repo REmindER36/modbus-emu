@@ -139,6 +139,10 @@ public class ApplicationManager {
         return sensors;
     }
 
+    public List<CoilSensorMapper> getMappers() {
+        return mappers;
+    }
+
     private static class ModBusListener extends Thread {
 
         private SerialConnection connection;
