@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.*?>
 
-<GridPane alignment="BASELINE_CENTER" blendMode="SRC_OVER" cache="false" gridLinesVisible="false" hgap="0.0" maxHeight="-Infinity" maxWidth="722.0" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="-1.0" prefWidth="-1.0" rotate="0.0" snapToPixel="false" vgap="0.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.reminder.edu.controller.SlaveController  <!-- <columnConstraints> <ColumnConstraints minWidth="10.0" prefWidth="100.0" 
-		/> </columnConstraints> -->
+<GridPane alignment="BASELINE_CENTER" blendMode="SRC_OVER" cache="false" gridLinesVisible="false" hgap="0.0" maxHeight="-Infinity" maxWidth="722.0" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="-1.0" prefWidth="-1.0" rotate="0.0" snapToPixel="false" vgap="0.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.reminder.edu.controller.MasterController">
   <children>
     <TabPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="221.0" prefWidth="722.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="1.7976931348623157E308" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <tabs>

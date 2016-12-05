@@ -1,4 +1,4 @@
-package org.reminder.edu.modbusmaster;
+package org.reminder.edu;
 
 public interface Updatable {
 

@@ -2,7 +2,7 @@ package org.reminder.edu.modbusmaster.entity;
 
 import java.net.ConnectException;
 
-import org.reminder.edu.modbusmaster.Updatable;
+import org.reminder.edu.Updatable;
 import org.reminder.edu.modbusslave.entity.Sensor;
 
 import net.wimpi.modbus.io.ModbusSerialTransaction;
@@ -13,7 +13,7 @@ import net.wimpi.modbus.procimg.InputRegister;
 
 public class SensorProxy implements Sensor, Updatable {
 
-    private SerialConnection connection;
+    //private SerialConnection connection;
     private Sensor sensor;
     private ModbusSerialTransaction tx;
 
@@ -21,7 +21,7 @@ public class SensorProxy implements Sensor, Updatable {
             throws ConnectException {
         if (!connection.isOpen())
             throw new ConnectException("Соединение закрыто.");
-        this.connection = connection;
+        //this.connection = connection;
         this.sensor = sensor;
         this.tx = new ModbusSerialTransaction(connection);
     }
@@ -62,27 +62,27 @@ public class SensorProxy implements Sensor, Updatable {
     }
 
     @Override
-    public void onSensor() throws Exception {
+    public void onSensor() {
         sensor.onSensor();
     }
 
     @Override
-    public void offSensor() throws Exception {
+    public void offSensor() {
         sensor.offSensor();
     }
 
     @Override
-    public void setDefectStatus() throws Exception {
+    public void setDefectStatus() {
         sensor.setDefectStatus();
     }
 
     @Override
-    public void setNormalStatus() throws Exception {
+    public void setNormalStatus() {
         sensor.setNormalStatus();
     }
 
     @Override
-    public void setAlarmStatus() throws Exception {
+    public void setAlarmStatus() {
         sensor.setAlarmStatus();
     }
 

@@ -1,4 +1,4 @@
-package org.reminder.edu.modbusmaster;
+package org.reminder.edu;
 
 import net.wimpi.modbus.ModbusCoupler;
 import net.wimpi.modbus.io.ModbusSerialTransaction;
