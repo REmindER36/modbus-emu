@@ -1,5 +1,6 @@
 package org.reminder.edu.modbusslave.comm;
 
+import org.reminder.edu.modbusslave.entity.Sensor;
 import org.reminder.edu.modbusslave.entity.SensorImpl;
 
 import javafx.beans.property.IntegerProperty;
@@ -8,7 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import net.wimpi.modbus.procimg.Register;
 
-public class DataRegisterSensor extends SensorImpl {
+public class DataRegisterSensor extends SensorImpl implements Sensor {
 
     private Register register;
     private IntegerProperty registerNumber;
