@@ -18,12 +18,11 @@ public class SensorProxy implements Sensor, Updatable {
 
     public SensorProxy(Sensor sensor) {
         this.sensor = sensor;
-        this.slaveId = slaveId;
-        this.tx = new ModbusSerialTransaction(connection);
     }
 
     public void setConnection(SerialConnection connection) {
         this.connection = connection;
+        this.tx = new ModbusSerialTransaction(connection);
     }
 
     public void setSlaveId(int slaveId) {

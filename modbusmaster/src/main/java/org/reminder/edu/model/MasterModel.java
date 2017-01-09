@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.reminder.edu.modbusmaster.entity.SensorProxy;
 import org.reminder.edu.modbusslave.Helper;
+import org.reminder.edu.modbusslave.MessageRenderer;
 import org.reminder.edu.modbusslave.comm.DataRegisterSensor;
 import org.reminder.edu.modbusslave.entity.Sensor;
 
@@ -23,9 +24,10 @@ public class MasterModel {
     private String parity;
     private String portName;
     private int slaveId;
-    private int stopBits;
+    private String stopBits;
     
     private Collection<SensorProxy> sensors;
+    private MessageRenderer messageRenderer;
     
     public MasterModel() {
         List<DataRegisterSensor> originSensors = Helper.createSensorsFromConfiguration();
@@ -116,12 +118,19 @@ public class MasterModel {
         this.slaveId = slaveId;
     }
 
-    public int getStopBits() {
+    public String getStopBits() {
         return stopBits;
     }
 
-    public void setStopBits(int stopBits) {
+    public void setStopBits(String stopBits) {
         this.stopBits = stopBits;
     }
 
+    public MessageRenderer getMessageRenderer() {
+        return messageRenderer;
+    }
+
+    public void setMessageRenderer(MessageRenderer messageRenderer) {
+        this.messageRenderer = messageRenderer;
+    }
 }
