@@ -54,7 +54,11 @@ public class MasterModel {
         connection.close();
     }
     
-    private boolean isOpenConnection() {
+    public SerialConnection getSerialConnection() {
+        return this.connection;
+    }
+    
+    public boolean isOpenConnection() {
         return connection == null ? false : connection.isOpen();
     }
     

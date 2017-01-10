@@ -3,6 +3,7 @@ package org.reminder.edu.modbusmaster.entity;
 import org.reminder.edu.Updatable;
 import org.reminder.edu.modbusslave.entity.Sensor;
 
+import javafx.scene.control.Button;
 import net.wimpi.modbus.io.ModbusSerialTransaction;
 import net.wimpi.modbus.msg.ReadInputRegistersRequest;
 import net.wimpi.modbus.msg.ReadInputRegistersResponse;
@@ -12,7 +13,7 @@ import net.wimpi.modbus.procimg.InputRegister;
 public class SensorProxy implements Sensor, Updatable {
 
     private Sensor sensor;
-    private SerialConnection connection;
+    private Button button;
     private ModbusSerialTransaction tx;
     private int slaveId;
 
@@ -21,8 +22,15 @@ public class SensorProxy implements Sensor, Updatable {
     }
 
     public void setConnection(SerialConnection connection) {
-        this.connection = connection;
         this.tx = new ModbusSerialTransaction(connection);
+    }
+    
+    public void setButton(Button button) {
+        this.button = button;
+    }
+    
+    public Button getButton() {
+        return button;
     }
 
     public void setSlaveId(int slaveId) {

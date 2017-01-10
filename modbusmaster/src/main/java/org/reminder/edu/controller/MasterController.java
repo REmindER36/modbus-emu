@@ -1,9 +1,13 @@
 package org.reminder.edu.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
+import org.reminder.edu.modbusmaster.entity.SensorProxy;
 import org.reminder.edu.modbusslave.MessageRenderer;
 import org.reminder.edu.model.MasterModel;
 
@@ -54,13 +58,13 @@ public class MasterController implements Initializable {
     private Button td2;
     
     @FXML
-    private Button td3;
+    private Button dd3;
     
     @FXML
     private Button dd4;
     
     @FXML
-    private Button dd5;
+    private Button pk5;
     
     @FXML
     private Button tk6;
@@ -98,6 +102,8 @@ public class MasterController implements Initializable {
     private MessageRenderer messageRenderer;
     
     private MasterModel model;
+    
+    private Collection<Button> sensorButtons;
     
     
     @Override
@@ -148,8 +154,30 @@ public class MasterController implements Initializable {
         // flowControlItems.add("rts/cts out");
         flowControl.getSelectionModel().select(0);
         
-        this.messageRenderer = new TextAreaAdapter(logArea);
+        //this.messageRenderer = new TextAreaAdapter(logArea);
         this.model.setMessageRenderer(messageRenderer);
+        
+        this.sensorButtons = new ArrayList<Button>(15);
+        sensorButtons.add(td1);
+        sensorButtons.add(td2);
+        sensorButtons.add(dd3);
+        sensorButtons.add(dd4);
+        sensorButtons.add(pk5);
+        sensorButtons.add(tk6);
+        sensorButtons.add(tk7);
+        sensorButtons.add(dv8);
+        sensorButtons.add(dv9);
+        sensorButtons.add(ds10);
+        sensorButtons.add(ds11);
+        sensorButtons.add(ds12);
+        sensorButtons.add(do13);
+        sensorButtons.add(do14);
+        sensorButtons.add(do15);
+        
+        Iterator<SensorProxy> proxies = model.getSensors().iterator();
+        for (Button button: sensorButtons) {
+            proxies.next().setButton(button);
+        }
     }    
 
     @FXML
@@ -177,7 +205,23 @@ public class MasterController implements Initializable {
     }
     
     @FXML
-    private void handleSensorStateRequest(ActionEvent event) {
+    private void handleSensorStateRequest(ActionEvent event) throws Exception {
+        if (!model.isOpenConnection())
+            return;
         
+        for (SensorProxy sensor: model.getSensors()) {
+            sensor.update();
+            switch(sensor.getStateCode()) {
+            case 0:
+                sensor.getButton().setStyle("-fx-background-color: green");
+                break;
+            case 1:
+                sensor.getButton().setStyle("-fx-background-color: red");
+                break;
+            case 2:
+                sensor.getButton().setStyle("-fx-background-color: yellow");
+                break;
+            }
+        }
     }
 }

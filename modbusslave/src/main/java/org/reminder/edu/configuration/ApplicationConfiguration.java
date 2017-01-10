@@ -16,7 +16,7 @@ import static org.reminder.edu.configuration.DefaultConfiguration.VOLUME_CHANGE_
 
 public class ApplicationConfiguration {
 
-    private static final int MEASURING_DEVICE_COUNT = 10;
+    private static final int MEASURING_DEVICE_COUNT = 15;
     private static ApplicationConfiguration instance;
 
     private int slaveAdress = SLAVE_ADRESS;
