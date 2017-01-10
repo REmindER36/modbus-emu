@@ -100,7 +100,7 @@ public class SensorProxy implements Sensor, Updatable {
     @Override
     public void update() throws Exception {
         ReadInputRegistersRequest requset = new ReadInputRegistersRequest(
-                sensor.getId(), 1);
+                sensor.getId()-1, 1);
         requset.setUnitID(slaveId);
         ReadInputRegistersResponse response = null;
         tx.setRequest(requset);
